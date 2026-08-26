@@ -1,0 +1,29 @@
+{
+  "name": "odin-bst",
+  "version": "1.0.0",
+  "description": "\"An assignment given by [The Odin Project](https://theodinproject.com) to implement a binary-search-tree\"",
+  "keywords": [
+    "HashMap",
+    "Hash Map"
+  ],
+  "homepage": "https://github.com/rimanz/odin-bst#readme",
+  "bugs": {
+    "url": "https://github.com/rimanz/odin-bst/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rimanz/odin-bst.git"
+  },
+  "license": "ISC",
+  "author": "Riman Das",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "watch": "jest --watch file-types: *.js"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.29.7",
+    "jest": "^30.4.2"
+  }
+}
