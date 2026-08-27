@@ -45,4 +45,29 @@ export default class Tree {
       return this.includes(value, root.right);
     }
   }
+
+  insert(value) {
+    if (this.includes(value)) return;
+
+    let current = this.root;
+    while (current) {
+      if (value < current.data && current.left !== null) {
+        current = current.left;
+      } else if (value > current.data && current.right !== null) {
+        current = current.right;
+      } else {
+        break;
+      }
+    }
+
+    if (value < current.data) {
+      current.left = new Node(value);
+    } else {
+      current.right = new Node(value);
+    }
+  }
+
+  delete(value) {
+    if (!this.includes(value)) return;
+  }
 }
