@@ -1,5 +1,5 @@
 {
-  "name": "odin-bst",
+  "name": "odin-binary-search-tree",
   "version": "1.0.0",
   "description": "\"An assignment given by [The Odin Project](https://theodinproject.com) to implement a binary-search-tree\"",
   "keywords": [
