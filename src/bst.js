@@ -33,4 +33,16 @@ export default class Tree {
     console.log(`${prefix}${isLeft ? "└── " : "┌── "}${node.data}`);
     this.prettyPrint(node.left, `${prefix}${isLeft ? "    " : "│   "}`, true);
   }
+
+  includes(value, root = this.root) {
+    if (root === null) {
+      return false;
+    } else if (value === root.data) {
+      return true;
+    } else if (value < root.data) {
+      return this.includes(value, root.left);
+    } else if (value > root.data) {
+      return this.includes(value, root.right);
+    }
+  }
 }
