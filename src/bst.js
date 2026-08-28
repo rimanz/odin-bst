@@ -66,4 +66,62 @@ export default class Tree {
       current.right = new Node(value);
     }
   }
+
+  delete(value) {
+    if (!this.includes(value)) return;
+
+    // Find out node to delete and it's parent
+    let current = this.root;
+    let parent = null;
+
+    while (current && current.data !== value) {
+      if (value < current.data && current.left) {
+        parent = current;
+        current = current.left;
+      } else if (value > current.data && current.right) {
+        parent = current;
+        current = current.right;
+      } else {
+        break;
+      }
+    }
+
+    // when both sides are null
+    if (current.left === null && current.right === null) {
+      if (parent.left === current) {
+        parent.left = null;
+      } else {
+        parent.right = null;
+      }
+    }
+
+    // when one side is null
+    if (current.left === null || current.right === null) {
+      const temp = current.left ? current.left : current.right;
+
+      if (parent.left === current) {
+        parent.left = temp;
+      } else {
+        parent.right = temp;
+      }
+    }
+
+    // None of the sides are null
+    if (current.left && current.right) {
+      // Finding the successor node and it's parent
+      let successor = current.right;
+      let successorParent = null;
+
+      while (successor.left) {
+        successorParent = successor;
+        successor = successor.left;
+      }
+
+      // remove successor form it's place
+      successorParent.left = successor.right;
+
+      // replace current's value with successor's value
+      current.data = successor.data;
+    }
+  }
 }
