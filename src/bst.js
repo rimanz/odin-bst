@@ -66,8 +66,4 @@ export default class Tree {
       current.right = new Node(value);
     }
   }
-
-  delete(value) {
-    if (!this.includes(value)) return;
-  }
 }
