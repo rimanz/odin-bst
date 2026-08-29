@@ -15,6 +15,7 @@ export default class Queue {
   isEmpty() {
     if (this.tail && this.head === null) {
       // Exceptional case
+      console.log(this);
       throw new Error("Invalid Queue: Something Exceptional Happened!");
     }
 
@@ -40,6 +41,10 @@ export default class Queue {
 
     this.head = x.next;
     this.length--;
+
+    if (x.next === null) {
+      this.tail = null;
+    }
 
     return x.data;
   }
