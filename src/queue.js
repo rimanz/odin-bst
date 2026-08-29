@@ -41,7 +41,7 @@ export default class Queue {
     this.head = x.next;
     this.length--;
 
-    return x;
+    return x.data;
   }
 
   size() {
@@ -49,7 +49,7 @@ export default class Queue {
   }
 
   peek() {
-    return this.head;
+    return this.head.data;
   }
 
   buildQueue(arr) {
@@ -66,6 +66,5 @@ export default class Queue {
     }
 
     return outputs.join(" <= ");
-    console.log(output);
   }
 }

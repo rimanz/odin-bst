@@ -34,7 +34,7 @@ describe("Queue", () => {
 
   test("After popping, popped data should return", () => {
     const popped = queue.dequeue();
-    const output = popped.data;
+    const output = popped;
     const expected = 1;
 
     expect(output).toBe(expected);
@@ -62,7 +62,7 @@ describe("Queue", () => {
   });
 
   test("Calling 'queue.peek' should return a node with data 7", () => {
-    const output = queue.peek().data;
+    const output = queue.peek();
     const expected = 7;
 
     expect(output).toBe(expected);
