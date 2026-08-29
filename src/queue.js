@@ -15,7 +15,7 @@ export default class Queue {
   isEmpty() {
     if (this.tail && this.head === null) {
       // Exceptional case
-      throw new Error("Invalid Queue: Something Exceptional Hppened!");
+      throw new Error("Invalid Queue: Something Exceptional Happened!");
     }
 
     return this.head === null && this.tail === null;
@@ -24,8 +24,14 @@ export default class Queue {
   enqueue(data) {
     const node = new Node(data);
 
-    this.isEmpty() ? (this.head = node) : (this.tail.next = node);
-    this.tail = node;
+    if (this.isEmpty()) {
+      this.head = node;
+      this.tail = node;
+    } else {
+      this.tail.next = node;
+      this.tail = node;
+    }
+
     this.length++;
   }
 
