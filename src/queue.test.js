@@ -60,4 +60,11 @@ describe("Queue", () => {
 
     expect(output).toBe(expected);
   });
+
+  test("Calling 'queue.peek' should return a node with data 7", () => {
+    const output = queue.peek().data;
+    const expected = 7;
+
+    expect(output).toBe(expected);
+  });
 });

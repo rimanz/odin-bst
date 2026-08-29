@@ -42,6 +42,10 @@ export default class Queue {
     return this.length;
   }
 
+  peek() {
+    return this.head;
+  }
+
   buildQueue(arr) {
     arr.forEach((item) => this.enqueue(item));
   }
