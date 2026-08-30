@@ -37,6 +37,8 @@ export default class Queue {
   }
 
   dequeue() {
+    if (this.isEmpty()) return null;
+
     const x = this.head;
 
     this.head = x.next;
@@ -54,6 +56,8 @@ export default class Queue {
   }
 
   peek() {
+    if (this.isEmpty()) return null;
+
     return this.head.data;
   }
 
