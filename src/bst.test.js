@@ -58,4 +58,16 @@ describe("Binary Search Tree", () => {
 
     expect(output).toBe(expected);
   });
+
+  test("'levelOrderForEach' should discover data level by level, left to right", () => {
+    const output = [];
+    tree.levelOrderForEach((i) => output.push(i));
+    const expected = [8, 4, 67, 3, 7, 23, 6345, 1, 5, 9, 324, 19];
+
+    expect(output).toEqual(expected);
+  });
+
+  test("'levelOrderForEach' should throw an error if no callback provided", () => {
+    expect(() => tree.levelOrderForEach()).toThrow("A callback is required!");
+  });
 });

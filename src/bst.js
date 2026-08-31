@@ -1,3 +1,5 @@
+import Queue from "./queue.js";
+
 class Node {
   constructor(data) {
     this.data = data;
@@ -122,6 +124,26 @@ export default class Tree {
 
       // replace current's value with successor's value
       current.data = successor.data;
+    }
+  }
+
+  levelOrderForEach(callback) {
+    if (!callback) {
+      throw new Error("A callback is required!");
+    }
+
+    const queue = new Queue();
+    queue.enqueue(this.root);
+
+    let current = queue.peek();
+    while (current) {
+      if (current.left) queue.enqueue(current.left);
+      if (current.right) queue.enqueue(current.right);
+
+      callback(current.data);
+
+      queue.dequeue();
+      current = queue.peek();
     }
   }
 }
