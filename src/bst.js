@@ -136,4 +136,22 @@ export default class Tree {
       current = queue.peek();
     }
   }
+
+  inOrderForEach(callback, root = this.root) {
+    if (!callback) {
+      throw new Error("A callback is required!");
+    }
+
+    let current = root;
+
+    if (current.left) {
+      this.inOrderForEach(callback, current.left);
+    }
+
+    callback(current.data);
+
+    if (current.right) {
+      this.inOrderForEach(callback, current.right);
+    }
+  }
 }
