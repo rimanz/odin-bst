@@ -94,4 +94,16 @@ describe("Binary Search Tree", () => {
 
     expect(output).toEqual(expected);
   });
+
+  test("'postOrderForEach' should throw an error if no callback provided", () => {
+    expect(() => tree.postOrderForEach()).toThrow("A callback is required!");
+  });
+
+  test("'postOrderForEach' should discover data in 'left -> right -> root' order", () => {
+    const output = [];
+    tree.postOrderForEach((i) => output.push(i));
+    const expected = [1, 3, 5, 7, 4, 19, 9, 23, 324, 6345, 67, 8];
+
+    expect(output).toEqual(expected);
+  });
 });
