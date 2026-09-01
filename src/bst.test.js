@@ -82,4 +82,16 @@ describe("Binary Search Tree", () => {
 
     expect(output).toEqual(expected);
   });
+
+  test("'preOrderForEach' should throw an error if no callback provided", () => {
+    expect(() => tree.preOrderForEach()).toThrow("A callback is required!");
+  });
+
+  test("'preOrderForEach' should discover data in 'root -> left -> right' order", () => {
+    const output = [];
+    tree.preOrderForEach((i) => output.push(i));
+    const expected = [8, 4, 3, 1, 7, 5, 67, 23, 9, 19, 6345, 324];
+
+    expect(output).toEqual(expected);
+  });
 });
