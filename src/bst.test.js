@@ -106,4 +106,44 @@ describe("Binary Search Tree", () => {
 
     expect(output).toEqual(expected);
   });
+
+  test("'tree.heigth(19)' should return 0", () => {
+    const output = tree.heigth(19);
+    const expected = 0;
+
+    expect(output).toEqual(expected);
+  });
+
+  test("'tree.heigth(8)' should return 4", () => {
+    const output = tree.heigth(8);
+    const expected = 4;
+
+    expect(output).toEqual(expected);
+  });
+
+  test("'tree.heigth(99)' should return undefined", () => {
+    const output = tree.heigth(99);
+
+    expect(output).toBeUndefined();
+  });
+
+  test("'tree.depth(19)' should return 4", () => {
+    const output = tree.depth(19);
+    const expected = 4;
+
+    expect(output).toEqual(expected);
+  });
+
+  test("'tree.depth(8)' should return 0", () => {
+    const output = tree.depth(8);
+    const expected = 0;
+
+    expect(output).toEqual(expected);
+  });
+
+  test("'tree.depth(99)' should return undefined", () => {
+    const output = tree.depth(99);
+
+    expect(output).toBeUndefined();
+  });
 });

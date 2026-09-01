@@ -190,4 +190,45 @@ export default class Tree {
 
     callback(current.data);
   }
+
+  find(value, root = this.root) {
+    if (root === null) return;
+
+    if (root.data === value) {
+      return root;
+    } else if (root.data > value) {
+      return this.find(value, root.left);
+    } else if (root.data < value) {
+      return this.find(value, root.right);
+    } else {
+      return null;
+    }
+  }
+
+  heigth(value) {
+    function getHeight(node) {
+      if (node === null) return 0;
+      if (node.left === null && node.right === null) return 0;
+
+      const leftHeight = getHeight(node.left) + 1;
+      const rightHeight = getHeight(node.right) + 1;
+
+      return leftHeight > rightHeight ? leftHeight : rightHeight;
+    }
+
+    const node = this.find(value);
+    return node ? getHeight(node) : undefined;
+  }
+
+  depth(value, root = this.root) {
+    if (root === null) return;
+    if (root.data === value) return 0;
+
+    let d =
+      root.data > value
+        ? this.depth(value, root.left)
+        : this.depth(value, root.right);
+
+    if (d !== undefined) return d + 1;
+  }
 }
