@@ -231,4 +231,17 @@ export default class Tree {
 
     if (d !== undefined) return d + 1;
   }
+
+  isBalanced(node = this.root) {
+    if (node === null) return true;
+    const leftHeight = node.left ? this.heigth(node.left.data) : -1;
+    const rightHeight = node.right ? this.heigth(node.right.data) : -1;
+
+    const heightDiff = Math.abs(leftHeight - rightHeight);
+
+    const leftBalanced = node ? this.isBalanced(node.left) : false;
+    const rightBalanced = node ? this.isBalanced(node.right) : false;
+
+    return heightDiff < 2 && leftBalanced && rightBalanced;
+  }
 }

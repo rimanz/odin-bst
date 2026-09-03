@@ -146,4 +146,16 @@ describe("Binary Search Tree", () => {
 
     expect(output).toBeUndefined();
   });
+
+  test("At this moment, only the left of the tree is balanced. So, `tree.isBalanced(tree.root.left)` should return `true`", () => {
+    const output = tree.isBalanced(tree.root.left);
+
+    expect(output).toBeTruthy();
+  });
+
+  test("And `tree.isBalanced()` should return `false`", () => {
+    const output = tree.isBalanced();
+
+    expect(output).toBeFalsy();
+  });
 });
