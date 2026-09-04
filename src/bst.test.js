@@ -158,4 +158,18 @@ describe("Binary Search Tree", () => {
 
     expect(output).toBeFalsy();
   });
+
+  test("For this tree, after rebalancing, 9 should become the root", () => {
+    tree.rebalance();
+    const output = tree.root.data;
+    const expected = 9;
+
+    expect(output).toBe(expected);
+  });
+
+  test("And `tree.isBalanced()` should return `true` now", () => {
+    const output = tree.isBalanced();
+
+    expect(output).toBeTruthy();
+  });
 });

@@ -244,4 +244,16 @@ export default class Tree {
 
     return heightDiff < 2 && leftBalanced && rightBalanced;
   }
+
+  rebalance(root = this.root) {
+    if (!this.isBalanced()) {
+      const items = [];
+
+      this.inOrderForEach((item) => {
+        items.push(item);
+      });
+
+      this.root = this.buildTree(items);
+    }
+  }
 }
