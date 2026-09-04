@@ -1,6 +1,6 @@
 # Odin Binary Search Tree
 
-An implementation of a binary-search-trees created as an exercise for [The Odin Project](https://www.theodinproject.com/lessons/javascript-binary-search-trees).
+An implementation of a binary-search-trees created as an assignment for [The Odin Project](https://www.theodinproject.com/lessons/javascript-binary-search-trees).
 
 ## Overview
 
@@ -8,12 +8,12 @@ This repository contains an implementation of a `Binary Search Tree` wiht a ligh
 
 ## Prerequisites
 
-- Node.js (v14+ recommended)
-- npm (bundled with Node.js)
+- Node.js 14+
+- npm
 
 ## Quick Start
 
-1. Clone the repo:
+1. Clone the repository:
 
 ```bash
 git clone https://github.com/rimanz/odin-bst.git
@@ -32,60 +32,116 @@ npm install
 npm test
 ```
 
-Run tests in watch mode:
+4. Run the demo script:
 
 ```bash
-npm test -- --watch
+node main.js
 ```
 
-Run Jest with coverage:
+To watch tests while developing:
 
 ```bash
-npm test -- --coverage
+npm run watch
 ```
 
 ## Project Structure
 
-```
-babel.config.js
-package.json
-src/
-	bst.js
-	bst.test.js
+```text
+.
+├── babel.config.js
+├── main.js
+├── package.json
+├── README.md
+├── utils.js
+├── src/
+│   ├── bst.js
+│   ├── bst.test.js
+│   ├── queue.js
+│   └── queue.test.js
+└── node_modules/
 ```
 
 ## Usage
 
-Import the `Tree` class and use its methods:
+Import the `Tree` class from the BST module and create a tree from an array:
 
 ```js
 import Tree from "./src/bst.js";
 
-const tree = new Binary Search Tree();
-```
+const values = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
+const tree = new Tree(values);
 
-Note: `bst.js` is exported as an ES module (`export default class Binary Search Tree`).
+console.log(tree.root.data); // 8
+console.log(tree.includes(23)); // true
+
+// Traversals
+const inOrder = [];
+const preOrder = [];
+const postOrder = [];
+
+tree.inOrderForEach((value) => inOrder.push(value));
+tree.preOrderForEach((value) => preOrder.push(value));
+tree.postOrderForEach((value) => postOrder.push(value));
+
+console.log(inOrder);
+console.log(preOrder);
+console.log(postOrder);
+
+// Insert and rebalance
+
+tree.insert(100);
+tree.rebalance();
+console.log(tree.isBalanced()); // true
+```
 
 ## API
 
-- `new Tree()` — create an empty list
+`new Tree()` - Creates an instance of Tree.
+
+`buildTree(arr)` - Constructs a balanced binary search tree from an array.
+
+`includes(value)` - Returns `true` if the value exists in the tree, otherwise `false`.
+
+`insert(value)` - Inserts a new node into the tree while preserving BST ordering.
+
+`delete(value)` - Deletes a node from the tree if it exists.
+
+`levelOrderForEach(callback)` - Visits the tree in breadth-first order, left to right, and calls `callback` for each value.
+
+`inOrderForEach(callback)` - Visits the tree in left-root-right order.
+
+`preOrderForEach(callback)` - Visits the tree in root-left-right order.
+
+`postOrderForEach(callback)` - Visits the tree in left-right-root order.
+
+`find(value)` - Returns the node containing the searched value, or `undefined` if it does not exist.
+
+`heigth(value)` - Returns the height of the node for the given value. Note: the method name is intentionally spelled as `heigth` to match the assignment requirement.
+
+`depth(value)` - Returns the depth of the given value from the tree root.
+
+`isBalanced()` - Returns `true` if the tree is balanced, otherwise `false`.
+
+`rebalance()` - Rebuilds the tree to ensure it is balanced.
 
 ## Tests
 
-Tests are run with Jest. See the `test` script in `package.json`.
+The project uses Jest for unit tests. The test suite verifies BST behavior including root placement, traversal order, insertion, height depth, balance checks, and rebalancing.
+
+Run the tests with:
 
 ```bash
 npm test
 ```
 
-## Contributing
-
-Contributions and improvements are welcome. Open an issue or submit a pull request with a clear description and tests for new behavior.
-
 ## License
 
-ISC
+This project is licensed under the ISC license.
 
 ## Author
 
 Riman Das
+
+## Credits
+
+Built as an exercise for [The Odin Project](https://www.theodinproject.com/lessons/javascript-binary-search-trees).
